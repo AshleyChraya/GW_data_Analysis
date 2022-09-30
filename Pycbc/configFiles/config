@@ -1,0 +1,38 @@
+
+[variable_params]
+distance =
+inclination =
+delta_tc =
+ra = 
+dec =
+
+[static_params]
+mass1 = 38.804
+mass2 = 33.354
+f_lower = 20.0
+approximant = TaylorF2
+polarization = 0
+
+
+[prior-distance]
+name = uniform
+min-distance = 10
+max-distance = 1000
+
+[prior-inclination]
+name = sin_angle
+
+[prior-delta_tc]
+name = uniform
+min-delta_tc = -0.1
+max-delta_tc = 0.1
+
+[prior-ra+dec]
+; sky position prior
+name = uniform_sky
+
+[waveform_transforms-tc]
+name = custom
+inputs = delta_tc
+tc = ${data|trigger-time} + delta_tc
+ files/prior_gw150914.ini
